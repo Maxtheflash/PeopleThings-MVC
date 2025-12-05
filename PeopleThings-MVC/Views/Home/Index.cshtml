@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Catch Keeper Home";
+}
+
+<div class="jumbotron" style="background-color:#e1eef7; border-radius:20px; padding:30px;">
+    <h1 style="color:#1f3b4d;">People Things Lab : Catch Keeper Edition</h1>
+    <p class="lead" style="font-size:18px;">
+        This lab demonstrates complete CRUD functionality using <strong>ASP.NET MVC 5</strong> and <strong>Entity Framework 6</strong>.
+        It showcases database seeding, sorting, filtering, and paging — all implemented within the theme of <strong>Catch Keeper</strong>,
+        a personal fishing log application I am actively developing.
+    </p>
+    <p>
+        @Html.ActionLink("View Anglers", "Index", "People", null, new { @class = "btn btn-success btn-lg" })
+        @Html.ActionLink("View Gear", "Index", "Things", null, new { @class = "btn btn-primary btn-lg", style = "margin-left:10px;" })
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>About the Project</h2>
+        <p>
+            Built with <strong>ASP.NET MVC 5</strong> and <strong>Entity Framework 6</strong>, this lab reels in every core concept — CRUD functionality, database seeding, sorting, filtering, and paging — all wrapped in the theme of my personal fishing-log project, <strong>Catch Keeper</strong>.
+        </p>
+    </div>
+    <div class="col-md-6">
+        <h2>Quick Links</h2>
+        <ul>
+            <li>@Html.ActionLink("Anglers (People)", "Index", "People")</li>
+            <li>@Html.ActionLink("Gear / Things", "Index", "Things")</li>
+            <li>@Html.ActionLink("About Page", "About", "Home")</li>
+        </ul>
+    </div>
+</div>

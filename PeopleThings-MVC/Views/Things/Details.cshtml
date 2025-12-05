@@ -1,0 +1,30 @@
+﻿@model PeopleThingsMVC.Models.Things
+
+@{
+    ViewBag.Title = "Thing Details";
+}
+
+<h2>Thing Details</h2>
+
+<div>
+    <h4>Gear / Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Angler</dt>
+        <dd>@(Model.Person != null ? Model.Person.PersonName : "")</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.ThingName)</dt>
+        <dd>@Html.DisplayFor(model => model.ThingName)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Category)</dt>
+        <dd>@Html.DisplayFor(model => model.Category)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Notes)</dt>
+        <dd>@Html.DisplayFor(model => model.Notes)</dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ThingsId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

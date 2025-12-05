@@ -1,0 +1,116 @@
+﻿@model IEnumerable<PeopleThingsMVC.Models.Person>
+
+@{
+    ViewBag.Title = "Anglers";
+}
+
+<h2>Catch Keeper – Anglers</h2>
+
+<p>
+    @Html.ActionLink("Add New Angler", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+@using (Html.BeginForm("Index", "People", FormMethod.Get))
+{
+    <p>
+        Search by angler name:
+        @Html.TextBox(
+            "searchString",
+            ViewBag.CurrentFilter as string,
+            new { @class = "form-control", style = "display:inline-block; width:250px; margin-right:8px;" }
+        )
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink(
+                "Angler Name",
+                "Index",
+                new
+                {
+                    sortOrder = ViewBag.NameSortParm,
+                    currentFilter = ViewBag.CurrentFilter,
+                    page = ViewBag.PageNumber
+                }
+            )
+        </th>
+        <th>
+            @Html.ActionLink(
+                "Home Lake",
+                "Index",
+                new
+                {
+                    sortOrder = ViewBag.CitySortParm,
+                    currentFilter = ViewBag.CurrentFilter,
+                    page = ViewBag.PageNumber
+                }
+            )
+        </th>
+        <th>
+            @Html.ActionLink(
+                "Years Fishing",
+                "Index",
+                new
+                {
+                    sortOrder = ViewBag.AgeSortParm,
+                    currentFilter = ViewBag.CurrentFilter,
+                    page = ViewBag.PageNumber
+                }
+            )
+        </th>
+        <th>
+            Contact Email
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.PersonName)</td>
+            <td>@Html.DisplayFor(modelItem => item.City)</td>
+            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PersonId })
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+    @if (ViewBag.HasPreviousPage == true)
+    {
+        @Html.ActionLink("<< Previous", "Index", new
+        {
+            sortOrder = ViewBag.CurrentSort,
+            currentFilter = ViewBag.CurrentFilter,
+            page = ViewBag.PageNumber - 1
+        })
+    }
+    else
+    {
+        <span>&lt;&lt; Previous</span>
+    }
+
+    <span> | </span>
+
+    @if (ViewBag.HasNextPage == true)
+    {
+        @Html.ActionLink("Next >>", "Index", new
+        {
+            sortOrder = ViewBag.CurrentSort,
+            currentFilter = ViewBag.CurrentFilter,
+            page = ViewBag.PageNumber + 1
+        })
+    }
+    else
+    {
+        <span>Next &gt;&gt;</span>
+    }
+</div>

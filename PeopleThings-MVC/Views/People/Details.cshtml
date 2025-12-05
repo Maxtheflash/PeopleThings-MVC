@@ -1,0 +1,55 @@
+﻿@model PeopleThingsMVC.Models.Person
+
+@{
+    ViewBag.Title = "Angler Details";
+}
+
+<h2>Angler Details</h2>
+
+<div>
+    <h4>@Model.PersonName</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Angler Name</dt>
+        <dd>@Html.DisplayFor(m => m.PersonName)</dd>
+
+        <dt>Home Lake</dt>
+        <dd>@Html.DisplayFor(m => m.City)</dd>
+
+        <dt>Contact Email</dt>
+        <dd>@Html.DisplayFor(m => m.Email)</dd>
+
+        <dt>Years Fishing</dt>
+        <dd>@Html.DisplayFor(m => m.Age)</dd>
+    </dl>
+</div>
+
+<h3>Gear & Things Logged</h3>
+
+@if (Model.Things != null && Model.Things.Any())
+{
+    <table class="table table-striped">
+        <tr>
+            <th>Item Name</th>
+            <th>Category</th>
+            <th>Notes</th>
+        </tr>
+        @foreach (var item in Model.Things)
+        {
+            <tr>
+                <td>@item.ThingName</td>
+                <td>@item.Category</td>
+                <td>@item.Notes</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>This angler has no gear recorded yet.</p>
+}
+
+<p>
+    @Html.ActionLink("Edit Angler", "Edit", new { id = Model.PersonId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to Anglers", "Index", "People", null, new { @class = "btn btn-default", style = "margin-left:8px;" })
+</p>

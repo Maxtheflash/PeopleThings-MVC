@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PeopleThingsMVC.Models.Things>
+
+@{
+    ViewBag.Title = "Gear & Things";
+}
+
+<h2>Catch Keeper – Gear & Things</h2>
+
+<p>
+    @Html.ActionLink("Add New Item", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>Item Name</th>
+        <th>Category</th>
+        <th>Notes</th>
+        <th>Angler</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(m => item.ThingName)</td>
+            <td>@Html.DisplayFor(m => item.Category)</td>
+            <td>@Html.DisplayFor(m => item.Notes)</td>
+            <td>
+                @(item.Person != null ? item.Person.PersonName : "")
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ThingsId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ThingsId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ThingsId })
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,43 @@
+﻿/* Catch Keeper Lab Theme */
+
+body {
+    background: #f2f7fb;
+}
+
+.navbar-inverse {
+    background-color: #1f3b4d; /* deep water blue */
+    border-color: #142531;
+}
+
+    .navbar-inverse .navbar-brand,
+    .navbar-inverse .navbar-nav > li > a {
+        color: #f0f9ff;
+    }
+
+        .navbar-inverse .navbar-brand:hover,
+        .navbar-inverse .navbar-nav > li > a:hover {
+            color: #ffffff;
+        }
+
+h1, h2, h3 {
+    color: #1f3b4d;
+}
+
+.btn-primary {
+    background-color: #1f7a8c;
+    border-color: #155a63;
+}
+
+.btn-success {
+    background-color: #227c3e; /* bass green */
+    border-color: #165329;
+}
+
+.table > thead > tr > th {
+    background-color: #e1eef7;
+}
+
+footer {
+    color: #555;
+    font-size: 0.9em;
+}
